@@ -6,7 +6,7 @@ GitHub Pages로 바로 올릴 수 있는 정적 사이트입니다. 빌드 과�
 ## 폴더 구조
 
 ```
-index.html          랜딩(홈)
+index.html          랜딩(홈) — 앱 메인 화면(OpsLanding)을 옮긴 것
 about.html          회사 소개 · 팀 · 자문 교수진
 history.html        연혁
 news.html           소식 목록 / 본문 (news.html?id=글아이디)
@@ -14,7 +14,9 @@ news.html           소식 목록 / 본문 (news.html?id=글아이디)
 assets/css/style.css
 assets/js/config.js 회사명·대표·메일·사업자번호·주소 (머리말·꼬리말·회사 개요에 반영)
 assets/js/site.js   공통 머리말·꼬리말, 소식·연혁 그리기
-assets/img/favicon.svg
+assets/img/awos-logo-ring-288.png/.webp  원본 로고 (앱 public/logos 에서 가져옴, 꼬리말)
+assets/img/favicon.png, apple-touch-icon.png  원본 로고로 만든 아이콘
+assets/img/landing/                  역할별 화면 캡처 넣는 곳 (util.webp · auto.webp · f-track.webp)
 data/news.js        소식 게시판 글
 data/history.js     연혁 항목
 .nojekyll           GitHub Pages가 Jekyll 처리를 하지 않도록 하는 빈 파일
@@ -65,3 +67,8 @@ aviationwallet.com은 서비스 앱이 쓰고 있으므로, 회사 홈페이지�
 3. 연결이 확인되면 `Enforce HTTPS`를 켭니다.
 
 `404.html`의 "홈으로 가기"는 도메인 루트(`/`)로 이동합니다. `github.io/저장소명/` 주소만 쓸 때는 이 링크가 계정 루트로 가므로, 도메인을 연결해 쓰는 것을 기준으로 했습니다.
+
+## 역할별 화면 캡처
+
+홈의 '같은 정보, 역할마다 필요한 화면'은 앱 저장소의 `public/landing/ops/util.webp`, `auto.webp`, `f-track.webp`를
+`assets/img/landing/`에 그대로 넣으면 글 옆에 화면이 나타납니다. 파일이 없으면 글만 가운데 정렬로 보입니다.

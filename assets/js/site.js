@@ -34,17 +34,15 @@
     header.innerHTML =
       '<div class="wrap header-row">' +
         '<a class="brand" href="index.html" aria-label="AWOS 홈">' +
-          '<span class="brand-mark" aria-hidden="true">' +
-            '<svg viewBox="0 0 40 40" width="30" height="30"><circle cx="20" cy="20" r="14" fill="none" stroke="currentColor" stroke-width="3.2" stroke-dasharray="66 22" transform="rotate(-40 20 20)"/><path d="M28.5 9.5l5.5-2-2 5.5-4 1.4z" fill="var(--blue-ink)"/></svg>' +
-          "</span>" +
-          '<span class="brand-word"><span>AW</span><span class="brand-os">OS</span></span>' +
+          '<span class="brand-short">AW<span class="brand-os">OS</span></span>' +
+          '<span class="brand-long">Aviation Wallet <span class="brand-os">OS</span></span>' +
         "</a>" +
         '<button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">' +
           '<span class="menu-btn-bars" aria-hidden="true"></span><span class="sr-only">메뉴</span>' +
         "</button>" +
         '<nav id="site-nav" class="site-nav" aria-label="주 메뉴">' +
           '<ul>' + links + "</ul>" +
-          '<a class="btn btn-small" href="' + mailHref("[AWOS] 도입 문의") + '">도입 문의</a>' +
+          '<a class="btn btn-small" href="' + esc(S.appUrl) + '/inquiry">도입 문의</a>' +
         "</nav>" +
       "</div>";
 
@@ -67,7 +65,7 @@
   var footer = document.getElementById("site-footer");
   if (footer) {
     var info = [];
-    info.push("<div>" + esc(S.companyKo) + (S.companyEn ? " (" + esc(S.companyEn) + ")" : "") + "</div>");
+    info.push("<div class=\"footer-name\">" + esc(S.companyKo) + (S.companyEn ? " (" + esc(S.companyEn) + ")" : "") + "</div>");
     var line = [];
     if (S.ceo) line.push("대표 " + esc(S.ceo));
     if (S.bizNumber) line.push("사업자등록번호 " + esc(S.bizNumber));
@@ -77,7 +75,7 @@
 
     footer.innerHTML =
       '<div class="wrap footer-grid">' +
-        '<div class="footer-info">' + info.join("") + "</div>" +
+        '<div class="footer-info"><picture><source srcset="assets/img/awos-logo-ring-288.webp" type="image/webp"><img class="footer-logo" src="assets/img/awos-logo-ring-288.png" alt="AWOS" width="88" height="88"></picture>' + info.join("") + "</div>" +
         '<ul class="footer-links">' +
           '<li><a href="about.html">회사 소개</a></li>' +
           '<li><a href="history.html">연혁</a></li>' +
@@ -107,6 +105,39 @@
       return "<div><dt>" + r[0] + "</dt><dd>" + v + "</dd></div>";
     }).join("");
   }
+
+  /* ---------- 서비스(앱) 링크 ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-app-path]"), function (a) {
+    a.setAttribute("href", S.appUrl + a.getAttribute("data-app-path"));
+  });
+
+  /* ---------- 역할별 화면 탭 (index) ---------- */
+  var tabs = document.querySelectorAll('.role-tabs [role="tab"]');
+  if (tabs.length) {
+    var select = function (t) {
+      Array.prototype.forEach.call(tabs, function (x) {
+        var on = x === t;
+        x.setAttribute("aria-selected", String(on));
+        x.tabIndex = on ? 0 : -1;
+        document.getElementById(x.getAttribute("aria-controls")).hidden = !on;
+      });
+    };
+    Array.prototype.forEach.call(tabs, function (t, i) {
+      t.addEventListener("click", function () { select(t); });
+      t.addEventListener("keydown", function (e) {
+        var k = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (!k) return;
+        var n = tabs[(i + k + tabs.length) % tabs.length];
+        select(n); n.focus();
+      });
+    });
+  }
+  // 화면 캡처 파일이 아직 없으면 글만 보여줍니다
+  Array.prototype.forEach.call(document.querySelectorAll(".role-shot img"), function (img) {
+    var off = function () { img.closest(".role-panel").classList.add("no-shot"); };
+    if (img.complete && img.naturalWidth === 0) off();
+    img.addEventListener("error", off);
+  });
 
   /* ---------- 메일 링크 일괄 ---------- */
   Array.prototype.forEach.call(document.querySelectorAll("[data-mail]"), function (a) {
