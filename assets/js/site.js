@@ -106,6 +106,20 @@
     }).join("");
   }
 
+  /* ---------- 홈: 장(slide)이 화면에 들어오면 내용이 차례로 올라옴 ---------- */
+  var slides = document.querySelectorAll(".slide");
+  if (slides.length && "IntersectionObserver" in window) {
+    document.documentElement.classList.add("js");
+    Array.prototype.forEach.call(slides, function (sl) {
+      Array.prototype.forEach.call(sl.querySelectorAll(".rv"), function (el, i) { el.style.setProperty("--i", i); });
+      Array.prototype.forEach.call(sl.querySelectorAll(".flow-chips li"), function (el, j) { el.style.setProperty("--j", j); });
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.target.classList.toggle("is-in", e.isIntersecting); });
+    }, { threshold: 0.35 });
+    Array.prototype.forEach.call(slides, function (sl) { io.observe(sl); });
+  }
+
   /* ---------- 서비스(앱) 링크 ---------- */
   Array.prototype.forEach.call(document.querySelectorAll("[data-app-path]"), function (a) {
     a.setAttribute("href", S.appUrl + a.getAttribute("data-app-path"));
