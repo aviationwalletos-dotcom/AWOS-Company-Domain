@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AWOS | 한국형 비행교육원 행정관리 프로그램</title>
+<meta name="description" content="AWOS는 한국 비행교육원의 필요에 맞춘 한국형 비행교육원 행정관리 프로그램을 개발하고, 교육원·교관·교육생이 같은 기록으로 이어지는 생태계를 만듭니다.">
+<meta property="og:title" content="AWOS | 한국형 비행교육원 행정관리 프로그램">
+<meta property="og:description" content="한국 비행교육원에 맞춘 행정관리 프로그램과 그 위의 생태계를 만듭니다.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="home">
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header id="site-header" class="site-header"></header>
+
+<main id="main">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 id="hero-title">한국 비행교육원에 맞춘 행정관리 프로그램을 만듭니다</h1>
+        <p class="hero-lede">AWOS는 국내 비행교육원의 운영 방식과 항공 법령에 맞춘 한국형 비행교육원 행정관리 프로그램입니다. 스케줄 배정부터 브리핑, 비행기록, 교관 서명, 비행경력증명서까지 한 번 입력한 기록으로 이어집니다.</p>
+        <div class="hero-actions">
+          <a class="btn" data-mail="[AWOS] 도입 문의" href="#">도입 문의</a>
+          <a class="btn btn-ghost" href="#service">기능 살펴보기</a>
+        </div>
+      </div>
+
+      <figure class="board" aria-label="AWOS 스케줄 보드 예시">
+        <figcaption class="board-head"><strong>오늘의 비행 스케줄</strong><span>예시 화면</span></figcaption>
+        <ol class="strips">
+          <li class="strip st-signed">
+            <span class="strip-edge" aria-hidden="true"></span>
+            <span class="strip-time">08:30</span>
+            <span class="strip-ac"><b>HL1234</b><span>C172S 장주</span></span>
+            <span class="strip-route"><b>RKTL</b><span>학생 김하늘</span></span>
+            <span class="strip-state">서명 완료</span>
+          </li>
+          <li class="strip st-air">
+            <span class="strip-edge" aria-hidden="true"></span>
+            <span class="strip-time">09:40</span>
+            <span class="strip-ac"><b>HL1235</b><span>C172S 야외</span></span>
+            <span class="strip-route"><b>RKTL–RKPU</b><span>학생 박서준</span></span>
+            <span class="strip-state">비행 중</span>
+          </li>
+          <li class="strip st-go">
+            <span class="strip-edge" aria-hidden="true"></span>
+            <span class="strip-time">11:00</span>
+            <span class="strip-ac"><b>HL1240</b><span>다발 계기</span></span>
+            <span class="strip-route"><b>RKTL</b><span>학생 이도윤</span></span>
+            <span class="strip-state">GO</span>
+          </li>
+          <li class="strip st-brief">
+            <span class="strip-edge" aria-hidden="true"></span>
+            <span class="strip-time">13:20</span>
+            <span class="strip-ac"><b>HL1236</b><span>C172S 공역</span></span>
+            <span class="strip-route"><b>RKTL</b><span>학생 최유나</span></span>
+            <span class="strip-state"><span class="hide-sm">브리핑 </span>결재 대기</span>
+          </li>
+          <li class="strip st-assigned">
+            <span class="strip-edge" aria-hidden="true"></span>
+            <span class="strip-time">14:40</span>
+            <span class="strip-ac"><b>HL1234</b><span>C172S 장주</span></span>
+            <span class="strip-route"><b>RKTL</b><span>학생 정민우</span></span>
+            <span class="strip-state">배정됨</span>
+          </li>
+        </ol>
+        <p class="board-note">한 줄의 배정이 브리핑, 비행, 기록, 서명까지 같은 기록으로 이어집니다.</p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section-white" aria-labelledby="problem-title">
+    <div class="wrap problem">
+      <h2 id="problem-title">같은 비행을 로그북과 비행기록부에 손으로 두 번 적고 있습니다</h2>
+      <div class="problem-body">
+        <p>비행교육원의 하루는 엑셀 스케줄표, 종이 브리핑지, 개인 로그북, 기관 비행기록부, 교관 서명란으로 나뉘어 있습니다. 같은 비행이 여러 장부에 옮겨 적히면서 시간이 맞지 않고, 자격 유효기간과 응시 요건은 사람이 따로 계산합니다.</p>
+        <p><strong>AWOS는 이 장부들을 하나의 기록으로 묶습니다.</strong> 스케줄러가 배정한 비행이 브리핑과 결재를 거쳐 비행기록이 되고, 교관이 서명하면 교육원 기록과 교육생 로그북에 함께 남습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="service" class="section" aria-labelledby="service-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="service-title">현장에서 쓰는 순서대로 만들었습니다</h2>
+        <p>교육원마다 공역과 스케줄 규칙이 다르기 때문에, 공통 기본 기능 위에 교육원이 필요한 기능을 골라 구성합니다.</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <h3>스케줄 보드</h3>
+          <p>교관이 학생과 희망 시간을 올리면 스케줄러가 항공기와 시간을 배정합니다. 교육원별 공역과 출항 간격 규칙을 반영합니다.</p>
+        </div>
+        <div class="feature">
+          <h3>비행 전 브리핑과 Go/No-go</h3>
+          <p>브리핑지가 자동으로 작성되고 교관이 결재합니다. 결재가 끝난 비행만 GO로 넘어가며, 관리자는 기단 전체 상태를 한 화면에서 봅니다.</p>
+        </div>
+        <div class="feature">
+          <h3>전자 로그북</h3>
+          <p>국내 비행경력증명서 서식의 항목 구조 그대로 기록하고 집계합니다. 교관이 한 번 입력해 확정하면 편조 학생의 기록에도 함께 남습니다.</p>
+        </div>
+        <div class="feature">
+          <h3>교관 전자서명</h3>
+          <p>비행이 끝나면 바로 서명을 요청하고, 서명 이력은 서버에 남아 나중에도 확인할 수 있습니다.</p>
+        </div>
+        <div class="feature">
+          <h3>자격과 법령 판정</h3>
+          <p>자격증명, 항공신체검사, 항공영어구술능력의 유효기간과 응시 요건까지 남은 시간을 근거 조문과 함께 보여줍니다.</p>
+        </div>
+        <div class="feature">
+          <h3>비행 정보</h3>
+          <p>METAR·TAF 기상, NOTAM, 공역을 비행 준비 화면에서 함께 확인합니다.</p>
+        </div>
+        <div class="feature">
+          <h3>교육원 대시보드와 증명서</h3>
+          <p>교육생 비행시간 현황과 교관 승인, 비행경력증명서 승인을 교육원 담당자가 직접 처리합니다. 증명서는 법정 서식으로 출력됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white" aria-labelledby="flow-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="flow-title">비행 하루의 흐름</h2>
+      </div>
+      <ol class="flow">
+        <li><h3>배정</h3><p>스케줄러가 항공기와 시간을 배정합니다.</p></li>
+        <li><h3>브리핑과 결재</h3><p>브리핑지를 작성하고 교관 결재 후 GO.</p></li>
+        <li><h3>비행과 기록</h3><p>비행이 끝나면 기록이 한 번에 확정됩니다.</p></li>
+        <li><h3>서명과 증명서</h3><p>교관 서명 후 교육원 기록과 증명서로 남습니다.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="org-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="org-title">함께하는 기관</h2>
+        <p>선정과 입주, 출원 내역을 있는 그대로 적습니다.</p>
+      </div>
+      <div class="orgs">
+        <div class="org">
+          <h3>한국공항공사</h3>
+          <p>항공산업 창업 인큐베이팅 프로그램 선정·수료</p>
+          <p class="org-when">2026</p>
+        </div>
+        <div class="org">
+          <h3><a href="https://research.kau.ac.kr/index/main.php">한국항공대학교 산학협력단</a></h3>
+          <p>창업보육센터 입주기업</p>
+          <p class="org-when">2026 – 2029</p>
+        </div>
+        <div class="org">
+          <h3>특허청</h3>
+          <p>핵심 기술 특허 4건 출원</p>
+          <p class="org-when">2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-white" aria-labelledby="news-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="news-title">최근 소식</h2>
+      </div>
+      <ul id="latest-news" class="news-rows"></ul>
+      <p class="more-link"><a class="text-link" href="news.html">소식 전체 보기</a></p>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="wrap cta-grid">
+      <div>
+        <h2 id="cta-title">비행교육원 도입을 문의해 주세요</h2>
+        <p>교육생 수에 따른 월 구독으로 제공합니다. 교육원의 지금 운영 방식을 먼저 듣고, 교관과 실무진의 일이 늘지 않도록 맞춰 구성합니다.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn" data-mail="[AWOS] 도입 문의" href="#">도입 문의 메일 보내기</a>
+        <a class="btn btn-ghost" data-app href="https://aviationwallet.com">AWOS 열기</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+<script src="assets/js/config.js"></script>
+<script src="data/news.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
