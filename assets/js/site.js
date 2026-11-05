@@ -262,4 +262,85 @@
         '<ol class="hist-rows">' + rows + "</ol></section>";
     }).join("");
   }
+  /* ---------- 데스크톱 홈: 연혁 · 소식 · 아래 한 줄 ---------- */
+  var dHist = document.getElementById("desk-history");
+  if (dHist) {
+    var flat = [];
+    (window.HISTORY || []).slice().sort(function (a, b) {
+      return (b.year * 100 + b.month) - (a.year * 100 + a.month);
+    }).forEach(function (h) {
+      h.items.forEach(function (t, k) { flat.push({ y: h.year, m: h.month, t: t, first: k === 0 }); });
+    });
+    dHist.innerHTML = flat.slice(0, 8).map(function (e, i) {
+      return '<li class="dh-row' + (i === 0 ? " is-latest" : "") + (e.first ? "" : " same-month") + '">' +
+        '<span class="dh-dot" aria-hidden="true"></span>' +
+        '<time class="dh-when" datetime="' + e.y + "-" + String(e.m).padStart(2, "0") + '">' + (e.first ? e.y + ". " + e.m + "." : "") + "</time>" +
+        '<span class="dh-text">' + esc(e.t) + "</span></li>";
+    }).join("");
+    var clip = function () { dHist.classList.toggle("is-clipped", dHist.scrollHeight > dHist.clientHeight + 2); };
+    clip(); window.addEventListener("resize", clip);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(clip);
+  }
+  var dNews = document.getElementById("desk-news");
+  if (dNews) {
+    var catCls = { "공지": "c-notice", "소식": "c-news", "보도": "c-press" };
+    var now = Date.now();
+    dNews.innerHTML = news.length ? news.slice(0, 4).map(function (n) {
+      var fresh = (now - new Date(n.date + "T00:00:00+09:00").getTime()) < 14 * 864e5;
+      return '<li><a class="dn-row" href="news.html?id=' + encodeURIComponent(n.id) + '">' +
+        '<span class="dn-tags"><span class="dn-cat ' + (catCls[n.category] || "") + '">' + esc(n.category) + "</span>" +
+        (fresh ? '<span class="dn-new">NEW</span>' : "") + "</span>" +
+        '<span class="dn-title">' + esc(n.title) + "</span>" +
+        '<time class="dn-date" datetime="' + esc(n.date) + '">' + fmtDate(n.date) + "</time></a></li>";
+    }).join("") : '<li class="empty">아직 올라온 소식이 없습니다.</li>';
+  }
+  var dFoot = document.getElementById("desk-foot");
+  if (dFoot) {
+    var bits = [esc(S.companyKo)];
+    if (S.ceo) bits.push("대표 " + esc(S.ceo));
+    if (S.bizNumber) bits.push("사업자등록번호 " + esc(S.bizNumber));
+    if (S.email) bits.push('<a href="' + mailHref() + '">' + esc(S.email) + "</a>");
+    if (S.patentNote) bits.push(esc(S.patentNote));
+    dFoot.innerHTML = "<p>" + bits.join('<span class="sep" aria-hidden="true"></span>') + "</p>" +
+      "<p>© " + new Date().getFullYear() + " " + esc(S.companyEn || "AWOS") + "</p>";
+  }
+
+  /* ---------- 데스크톱 홈: 기능 장면 자동 재생 ---------- */
+  var player = document.querySelector(".player");
+  if (player) {
+    var scenes = player.querySelectorAll(".scene");
+    var pbtns = player.querySelectorAll(".player-nav button");
+    var SCENE_MS = 6500, cur = -1, timer = null;
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) player.classList.add("no-auto");
+    Array.prototype.forEach.call(scenes, function (sc) {
+      Array.prototype.forEach.call(sc.querySelectorAll(".sv"), function (el, i) { el.style.setProperty("--i", i); });
+      Array.prototype.forEach.call(sc.querySelectorAll(".flow-chips li"), function (el, j) { el.style.setProperty("--j", j); });
+    });
+    var visible = function () { return player.offsetParent !== null && !document.hidden; };
+    var tick;
+    var show = function (n) {
+      cur = n;
+      Array.prototype.forEach.call(scenes, function (sc, i) {
+        sc.classList.toggle("is-on", i === n);
+        sc.setAttribute("aria-hidden", String(i !== n));
+      });
+      Array.prototype.forEach.call(pbtns, function (b, i) {
+        b.classList.toggle("is-done", i < n);
+        b.classList.toggle("is-on", i === n);
+        b.setAttribute("aria-current", i === n ? "step" : "false");
+        var bar = b.querySelector(".pbar span");
+        bar.style.animation = "none"; void bar.offsetWidth; bar.style.animation = "";
+        bar.style.animationDuration = SCENE_MS + "ms";
+      });
+      window.clearTimeout(timer);
+      if (!reduceMotion) timer = window.setTimeout(tick, SCENE_MS);
+    };
+    tick = function () {
+      if (!visible()) { timer = window.setTimeout(tick, 1000); return; }
+      show((cur + 1) % scenes.length);
+    };
+    Array.prototype.forEach.call(pbtns, function (b, i) { b.addEventListener("click", function () { show(i); }); });
+    show(0);
+  }
 })();
