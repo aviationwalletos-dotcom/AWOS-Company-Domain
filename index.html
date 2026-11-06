@@ -23,85 +23,321 @@
 
 <main id="main" class="landing">
 
-  <!-- ===== 데스크톱(1181px 이상): 스크롤 없는 한 화면 =====
-       위 절반: 기능 자동 재생 / 아래 절반: 왼쪽 연혁 · 오른쪽 소식 -->
+  <!-- ===== 데스크톱(1181px 이상): 제품 소개형 긴 페이지 ===== -->
   <div class="desk">
-    <section class="player" aria-labelledby="desk-title">
-      <div class="player-copy">
-        <p class="lp-eyebrow">AVIATION WALLET OS</p>
-        <h1 id="desk-title" class="player-title">비행교육원의<br>모든 업무를 <span class="lp-brand">하나로</span></h1>
-        <p class="player-lede">스케줄 편성부터 브리핑, 실시간 비행, 훈련 기록, 운영 현황까지. 따로 쓰던 엑셀 · 종이 · 단톡방을 하나의 흐름으로 잇습니다.</p>
-        <a class="lp-btn" data-app-path="/inquiry" href="https://aviationwallet.com/inquiry">도입 문의
-          <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
-        <div class="player-nav" role="group" aria-label="기능 장면">
-          <button type="button" data-scene="0"><span class="pbar"><span></span></span><span class="plbl">스케줄</span></button>
-          <button type="button" data-scene="1"><span class="pbar"><span></span></span><span class="plbl">네 가지 일</span></button>
-          <button type="button" data-scene="2"><span class="pbar"><span></span></span><span class="plbl">역할</span></button>
-          <button type="button" data-scene="3"><span class="pbar"><span></span></span><span class="plbl">흐름</span></button>
-        </div>
-      </div>
 
-      <div class="player-stage">
-        <!-- 장면 1: 스케줄 -->
-        <div class="scene" data-i="0">
-          <p class="scene-cap sv">스케줄 · 브리핑 · Go / No-go</p>
-          <div class="board sv" aria-label="스케줄 보드 예시">
-            <div class="board-head"><strong>오늘의 비행 스케줄</strong><span>예시 화면</span></div>
+    <!-- 히어로 -->
+    <section class="t-hero" aria-labelledby="t-hero-title">
+      <div class="t-wrap t-hero-grid">
+        <div class="t-hero-copy">
+          <p class="t-eyebrow">한국형 비행교육원 운영 시스템</p>
+          <h1 id="t-hero-title">첫 레슨부터 수료까지,<br>교육원 운영을 한 시스템에서</h1>
+          <p class="t-lede">스케줄 편성, 브리핑과 Go/No-go, 비행기록과 교관 서명, 자격 관리, 운영 현황까지. 국내 법령과 서식, 교육원마다 다른 운영 규칙에 맞춰 만들었습니다.</p>
+          <div class="t-ctas">
+            <a class="t-btn" data-app-path="/inquiry" href="https://aviationwallet.com/inquiry">도입 문의</a>
+            <a class="t-btn t-btn-line" href="#how">작동 방식 보기</a>
+          </div>
+        </div>
+
+        <div class="t-hero-shot" aria-label="AWOS 화면 예시">
+          <div class="t-window">
+            <div class="t-window-bar"><span class="t-window-title">스케줄 보드</span><span class="t-window-tag">예시 화면</span></div>
             <ol class="strips">
               <li class="strip st-signed"><span class="strip-edge" aria-hidden="true"></span><span class="strip-time">08:30</span><span class="strip-ac"><b>HL1234</b><span>C172S 장주</span></span><span class="strip-route"><b>RKTL</b><span>학생 김하늘</span></span><span class="strip-state">서명 완료</span></li>
               <li class="strip st-air"><span class="strip-edge" aria-hidden="true"></span><span class="strip-time">09:40</span><span class="strip-ac"><b>HL1235</b><span>C172S 야외</span></span><span class="strip-route"><b>RKTL–RKPU</b><span>학생 박서준</span></span><span class="strip-state">비행 중</span></li>
               <li class="strip st-go"><span class="strip-edge" aria-hidden="true"></span><span class="strip-time">11:00</span><span class="strip-ac"><b>HL1240</b><span>다발 계기</span></span><span class="strip-route"><b>RKTL</b><span>학생 이도윤</span></span><span class="strip-state">GO</span></li>
               <li class="strip st-brief"><span class="strip-edge" aria-hidden="true"></span><span class="strip-time">13:20</span><span class="strip-ac"><b>HL1236</b><span>C172S 공역</span></span><span class="strip-route"><b>RKTL</b><span>학생 최유나</span></span><span class="strip-state">브리핑 결재 대기</span></li>
+              <li class="strip st-assigned"><span class="strip-edge" aria-hidden="true"></span><span class="strip-time">14:40</span><span class="strip-ac"><b>HL1234</b><span>C172S 장주</span></span><span class="strip-route"><b>RKTL</b><span>학생 정민우</span></span><span class="strip-state">배정됨</span></li>
             </ol>
           </div>
-        </div>
-
-        <!-- 장면 2: 네 가지 일 -->
-        <div class="scene" data-i="1">
-          <p class="scene-cap sv">하나의 시스템, 네 가지 일</p>
-          <div class="mini-pillars">
-            <div class="mini-pillar sv"><span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span><h3>행정</h3><ul><li>구성원 · 차수 · 보관</li><li>교관 배정 · 진도</li><li>공지 · 근무표 · 휴가</li></ul></div>
-            <div class="mini-pillar sv"><span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></span><h3>비행</h3><ul><li>스케줄 · 브리핑</li><li>Go / No-go</li><li>실시간 추적 · 교신</li></ul></div>
-            <div class="mini-pillar sv"><span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></span><h3>자동화</h3><ul><li>라인업 자동 배정</li><li>로그북 자동 작성</li><li>서명 · 자격번호 자동 기재</li></ul></div>
-            <div class="mini-pillar sv"><span class="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>안전</h3><ul><li>비행 적합성 · 커런시</li><li>NOTAM · 공역 제한</li><li>안전 공지 확인</li></ul></div>
-          </div>
-        </div>
-
-        <!-- 장면 3: 역할 -->
-        <div class="scene" data-i="2">
-          <p class="scene-cap sv">같은 정보, 역할마다 필요한 화면</p>
-          <div class="mini-roles">
-            <div class="mini-role sv"><p class="role-name">기관 · 관리자</p><h3>운영을 한 화면에서</h3><p>기단 모니터로 비행 현황을 보고, 가동률 · 진도 · 교관 비행시간을 따로 모으지 않아도 집계합니다.</p></div>
-            <div class="mini-role sv"><p class="role-name">스케줄러</p><h3>라인업을 모으면 스케줄이 됩니다</h3><p>가용 기체 · 교관 근무 · NOTAM 제한을 반영해 자동으로 배정하고, 확정하면 바로 알립니다.</p></div>
-            <div class="mini-role sv"><p class="role-name">교관 · 학생</p><h3>브리핑부터 훈련 기록까지</h3><p>브리핑 · 결재 · Go/No-go를 거쳐 비행하고, 착륙하면 로그북 · 훈련기록부 · 서명이 이어서 채워집니다.</p></div>
-          </div>
-        </div>
-
-        <!-- 장면 4: 흐름 -->
-        <div class="scene" data-i="3">
-          <p class="scene-cap sv">한 번 입력하면, 끝까지 이어집니다</p>
-          <ol class="flow-chips desk-flow">
-            <li>라인업</li><li>자동 배정</li><li>브리핑</li><li>결재</li><li>Go / No-go</li>
-            <li>비행</li><li>착륙</li><li>로그북</li><li>훈련기록부</li><li>서명</li>
-          </ol>
-          <p class="scene-note sv">스케줄의 레슨이 브리핑에, 비행 시간이 로그북에, 평가가 훈련기록부와 진도에 그대로 이어집니다.</p>
+          <ul class="t-float" aria-label="알림 예시">
+            <li class="t-float-1"><span class="t-fdot d-blue" aria-hidden="true"></span><span><b>다음 레슨</b>13:20 · C172S 공역 · 최유나</span></li>
+            <li class="t-float-2"><span class="t-fdot d-amber" aria-hidden="true"></span><span><b>자격 알림</b>항공신체검사 만료 48일 전</span></li>
+            <li class="t-float-3"><span class="t-fdot d-green" aria-hidden="true"></span><span><b>훈련기록부</b>교관 서명 완료 · 로그북 반영</span></li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <div class="desk-bottom">
-      <section class="dcard" aria-labelledby="dh-title">
-        <div class="dcard-head"><h2 id="dh-title">연혁</h2><a class="dcard-more" href="history.html">전체 보기</a></div>
-        <ol id="desk-history" class="dhist"></ol>
-      </section>
-      <section class="dcard" aria-labelledby="dn-title">
-        <div class="dcard-head"><h2 id="dn-title">소식</h2><a class="dcard-more" href="news.html">전체 보기</a></div>
-        <ul id="desk-news" class="dnews"></ul>
-      </section>
-    </div>
+    <!-- 숫자 띠 -->
+    <section class="t-stats" aria-label="AWOS 요약">
+      <div class="t-wrap t-stats-row">
+        <div><p class="t-stat">4개 역할</p><p>기관 · 스케줄러 · 교관 · 학생</p></div>
+        <div><p class="t-stat">1번 입력</p><p>로그북 · 훈련기록부 · 증명서까지</p></div>
+        <div><p class="t-stat">국내 법령</p><p>항공안전법 기준 자격 · 커런시 판정</p></div>
+        <div><p class="t-stat">특허 4건</p><p>핵심 기술 출원</p></div>
+      </div>
+    </section>
 
-    <div id="desk-foot" class="desk-foot"></div>
+    <!-- 5단계 -->
+    <section class="t-sec" aria-labelledby="t-steps-title">
+      <div class="t-wrap">
+        <div class="t-head">
+          <p class="t-eyebrow">하나의 흐름</p>
+          <h2 id="t-steps-title">라인업에서 서명까지, 끊기지 않습니다</h2>
+          <p>스케줄에 넣은 레슨이 브리핑으로, 비행 시간이 로그북으로, 평가가 훈련기록부와 진도로 그대로 이어집니다.</p>
+        </div>
+        <ol class="t-steps">
+          <li><h3>라인업</h3><p>교관이 학생과 희망 시간을 올립니다.</p></li>
+          <li><h3>배정</h3><p>가용 기체 · 근무 · NOTAM을 반영해 배정합니다.</p></li>
+          <li><h3>브리핑 · 결재</h3><p>브리핑지를 쓰고 교관 결재 후 GO.</p></li>
+          <li><h3>비행</h3><p>비행 중 상태가 보드에 바로 표시됩니다.</p></li>
+          <li><h3>기록 · 서명</h3><p>로그북 · 훈련기록부가 채워지고 서명합니다.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 작동 방식 -->
+    <section id="service" class="t-sec t-tint" aria-labelledby="how-title">
+      <div class="t-wrap">
+        <div class="t-head" id="how">
+          <p class="t-eyebrow">작동 방식</p>
+          <h2 id="how-title">교육원이 매일 하는 일을 그대로 옮겼습니다</h2>
+        </div>
+
+        <div class="t-feature">
+          <div class="t-feature-text">
+            <p class="t-label">스케줄</p>
+            <h3>라인업을 모으면 스케줄이 됩니다</h3>
+            <ul class="t-checks">
+              <li>교관별 라인업 취합과 1 · 2 · 3지망 반영</li>
+              <li>가용 기체 · 교관 근무표 · NOTAM 제한을 반영한 자동 배정</li>
+              <li>교육원별 공역과 출항 간격 규칙 설정</li>
+              <li>확정하면 교관과 학생에게 바로 알림</li>
+            </ul>
+          </div>
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><span>주간 배정</span><span class="mock-tag">예시</span></div>
+            <div class="gantt">
+              <div class="gantt-hours"><span></span><span>08</span><span>10</span><span>12</span><span>14</span><span>16</span></div>
+              <div class="gantt-row"><b>HL1234</b><div class="gantt-track"><i class="g-blue" style="left:4%;width:16%"></i><i class="g-blue" style="left:58%;width:18%"></i></div></div>
+              <div class="gantt-row"><b>HL1235</b><div class="gantt-track"><i class="g-sky" style="left:20%;width:26%"></i></div></div>
+              <div class="gantt-row"><b>HL1236</b><div class="gantt-track"><i class="g-amber" style="left:44%;width:18%"></i><i class="g-gray" style="left:72%;width:20%"></i></div></div>
+              <div class="gantt-row"><b>HL1240</b><div class="gantt-track"><i class="g-green" style="left:28%;width:22%"></i></div></div>
+              <div class="gantt-row"><b>HL1241</b><div class="gantt-track"><i class="g-off" style="left:0;width:100%">정비</i></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="t-feature t-flip">
+          <div class="t-feature-text">
+            <p class="t-label">브리핑 · 안전</p>
+            <h3>결재가 끝난 비행만 GO</h3>
+            <ul class="t-checks">
+              <li>브리핑지 자동 작성과 교관 결재</li>
+              <li>Go / No-go 판단과 상태 표시</li>
+              <li>비행 적합성 · 커런시 확인</li>
+              <li>안전 공지 확인 여부 기록</li>
+            </ul>
+          </div>
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><span>비행 전 브리핑 · HL1236</span><span class="mock-tag">예시</span></div>
+            <ul class="mchecks">
+              <li class="ok">레슨 · 공역 확인</li>
+              <li class="ok">NOTAM · 공역 제한</li>
+              <li class="ok">중량 · 무게중심</li>
+              <li class="ok">비행 적합성 · 커런시</li>
+              <li class="wait">교관 결재</li>
+            </ul>
+            <div class="mgo"><span>결재 후 GO 가능</span><b>NO-GO</b></div>
+          </div>
+        </div>
+
+        <div class="t-feature">
+          <div class="t-feature-text">
+            <p class="t-label">기록</p>
+            <h3>한 번 입력하면 기록부와 로그북에 함께</h3>
+            <ul class="t-checks">
+              <li>교관이 한 번 확정하면 편조 학생 기록까지 반영</li>
+              <li>전자 로그북과 실라버스 기준 훈련기록부</li>
+              <li>교관 전자서명과 서명 이력 보관</li>
+              <li>비행경력증명서 법정 서식 출력</li>
+            </ul>
+          </div>
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><span>전자 로그북</span><span class="mock-tag">예시</span></div>
+            <table class="mtable">
+              <thead><tr><th>날짜</th><th>등록</th><th>출발-도착</th><th>비행</th><th>서명</th></tr></thead>
+              <tbody>
+                <tr><td>11. 05.</td><td>HL1235</td><td>RKTL-RKPU</td><td>1.8</td><td><span class="pill p-green">완료</span></td></tr>
+                <tr><td>11. 04.</td><td>HL1234</td><td>RKTL</td><td>1.2</td><td><span class="pill p-green">완료</span></td></tr>
+                <tr><td>11. 03.</td><td>HL1240</td><td>RKTL</td><td>1.5</td><td><span class="pill p-amber">요청</span></td></tr>
+                <tr><td>11. 01.</td><td>HL1236</td><td>RKTL</td><td>1.0</td><td><span class="pill p-green">완료</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="t-feature t-flip">
+          <div class="t-feature-text">
+            <p class="t-label">자격 · 법령</p>
+            <h3>유효기간과 요건을 사람이 따로 세지 않습니다</h3>
+            <ul class="t-checks">
+              <li>자격증명 · 항공신체검사 · 항공영어구술능력 유효기간</li>
+              <li>응시 요건까지 남은 비행시간</li>
+              <li>판정마다 근거 조문 표시</li>
+              <li>법령 개정 확인</li>
+            </ul>
+          </div>
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><span>자격 현황 · 김하늘</span><span class="mock-tag">예시</span></div>
+            <ul class="mcreds">
+              <li><span>자가용조종사</span><span class="pill p-green">유효</span></li>
+              <li><span>항공신체검사 2종</span><span class="pill p-amber">48일 남음</span></li>
+              <li><span>항공영어구술능력 4등급</span><span class="pill p-green">212일 남음</span></li>
+              <li><span>계기비행증명 응시 요건</span><span class="mprog"><i style="width:68%"></i></span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="t-feature">
+          <div class="t-feature-text">
+            <p class="t-label">기관 운영</p>
+            <h3>운영 현황을 따로 모으지 않아도</h3>
+            <ul class="t-checks">
+              <li>기단 모니터와 가동률</li>
+              <li>비행시간 기준 진도 · 교관 비행시간 집계</li>
+              <li>구성원 · 차수 관리, 교관 배정</li>
+              <li>공지 · 근무표 · 휴가 승인</li>
+            </ul>
+          </div>
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><span>운영 현황</span><span class="mock-tag">예시</span></div>
+            <div class="mkpis">
+              <div><p>오늘 비행</p><b>18편</b></div>
+              <div><p>서명 대기</p><b>5건</b></div>
+              <div><p>정비 중</p><b>1대</b></div>
+            </div>
+            <div class="mbars">
+              <p>교관별 이번 달 비행시간</p>
+              <div><span>교관 A</span><i style="width:86%"></i></div>
+              <div><span>교관 B</span><i style="width:72%"></i></div>
+              <div><span>교관 C</span><i style="width:58%"></i></div>
+              <div><span>교관 D</span><i style="width:41%"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 역할별 -->
+    <section class="t-sec" aria-labelledby="t-roles-title">
+      <div class="t-wrap">
+        <div class="t-head">
+          <p class="t-eyebrow">모든 구성원</p>
+          <h2 id="t-roles-title">교육원의 모든 사람이 같은 기록을 봅니다</h2>
+        </div>
+        <div class="t-roles">
+          <div class="t-role"><h3>기관 · 관리자</h3><ul><li>기단 모니터 · 가동률</li><li>진도 · 교관 비행시간</li><li>교관 · 증명서 승인</li></ul></div>
+          <div class="t-role"><h3>스케줄러</h3><ul><li>라인업 취합</li><li>자동 배정 · 확정</li><li>NOTAM · 공역 제한</li></ul></div>
+          <div class="t-role"><h3>교관</h3><ul><li>브리핑 결재 · Go/No-go</li><li>기록 확정 · 전자서명</li><li>훈련 평가</li></ul></div>
+          <div class="t-role"><h3>학생</h3><ul><li>내 스케줄 · 브리핑</li><li>로그북 · 진도</li><li>자격 유효기간</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 한국형 -->
+    <section class="t-sec t-tint" aria-labelledby="t-kr-title">
+      <div class="t-wrap">
+        <div class="t-head">
+          <p class="t-eyebrow">한국형</p>
+          <h2 id="t-kr-title">국내 교육원에 맞춘 네 가지</h2>
+          <p>해외 프로그램에 국내 운영을 끼워 맞추는 대신, 처음부터 국내 기준으로 만들었습니다.</p>
+        </div>
+        <div class="t-kr">
+          <div class="t-kr-card"><h3>국내 서식</h3><p>비행경력증명서를 법정 서식으로 출력하고, 로그북 항목도 국내 서식 구조를 따릅니다.</p></div>
+          <div class="t-kr-card"><h3>국내 법령 판정</h3><p>항공안전법과 하위 규정 기준으로 자격 · 커런시를 판정하고 근거 조문을 함께 보여줍니다.</p></div>
+          <div class="t-kr-card"><h3>교육원별 운영 규칙</h3><p>공역 배분, 출항 간격, 기체 운용 제한처럼 교육원마다 다른 규칙을 설정으로 반영합니다.</p></div>
+          <div class="t-kr-card"><h3>지금 방식 그대로</h3><p>현재 운영 방식을 먼저 듣고 맞춰 구성해, 교관과 실무진의 일이 늘지 않게 합니다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 요금 · 시작 -->
+    <section id="pricing" class="t-sec" aria-labelledby="t-price-title">
+      <div class="t-wrap t-two">
+        <div class="t-price">
+          <p class="t-eyebrow">요금</p>
+          <h2 id="t-price-title">교육생 수에 따른 월 구독</h2>
+          <p>기본 패키지에 교육원이 필요한 기능을 골라 구성하며, 요금은 교육생 수로만 정해집니다. 교육원 규모에 맞춘 견적은 도입 문의로 안내합니다.</p>
+          <a class="t-btn" data-app-path="/inquiry" href="https://aviationwallet.com/inquiry">견적 문의</a>
+        </div>
+        <div>
+          <p class="t-eyebrow">도입 순서</p>
+          <h2 class="t-h2-sm">세 단계면 운영을 시작합니다</h2>
+          <ol class="t-start">
+            <li><h3>상담</h3><p>교육원의 현재 운영 방식과 필요한 기능을 듣습니다.</p></li>
+            <li><h3>구성</h3><p>스케줄 규칙 · 기체 · 구성원을 교육원에 맞게 설정합니다.</p></li>
+            <li><h3>운영 시작</h3><p>교관 · 학생 계정을 열고 실제 운영으로 넘어갑니다.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 자주 묻는 질문 -->
+    <section id="faq" class="t-sec t-tint" aria-labelledby="t-faq-title">
+      <div class="t-wrap t-faq-grid">
+        <div class="t-head t-head-left">
+          <p class="t-eyebrow">자주 묻는 질문</p>
+          <h2 id="t-faq-title">도입 전에 많이 묻는 것들</h2>
+          <p>더 궁금한 점은 <a data-mail="[AWOS] 문의" href="#">메일</a>로 보내 주세요.</p>
+        </div>
+        <div class="t-faq">
+          <details><summary>지금 쓰는 엑셀 기록은 어떻게 되나요?</summary><p>기존 비행기록은 엑셀로 가져올 수 있습니다. 도입 상담 때 지금 쓰는 양식을 보고 옮기는 방법을 정합니다.</p></details>
+          <details><summary>교관과 실무진의 일이 늘어나지 않나요?</summary><p>현재 운영 방식을 반영해 구성하는 것이 원칙입니다. 교관이 한 번 확정한 기록이 학생 로그북과 기관 기록에 함께 반영되어, 같은 내용을 여러 번 적을 일이 줄어듭니다.</p></details>
+          <details><summary>어떤 기기에서 쓰나요?</summary><p>PC, 태블릿, 휴대폰의 웹 브라우저에서 바로 사용합니다. 역할마다 필요한 화면이 따로 구성되어 있습니다.</p></details>
+          <details><summary>교육생이 수료하거나 탈퇴하면 기록은요?</summary><p>기관이 확정한 비행 · 훈련 기록은 회원이 탈퇴해도 기관 기록으로 계속 보관됩니다.</p></details>
+          <details><summary>요금은 어떻게 정해지나요?</summary><p>교육생 수에 따른 월 구독 하나로 정해지며, 기능을 더 고른다고 요금이 나뉘지 않습니다.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 소식 · 연혁 -->
+    <section class="t-sec" aria-labelledby="t-news-title">
+      <div class="t-wrap">
+        <div class="t-head t-head-row">
+          <div><p class="t-eyebrow">AWOS 소식</p><h2 id="t-news-title">최근 소식</h2></div>
+          <a class="t-more" href="news.html">소식 전체 보기</a>
+        </div>
+        <div id="t-news" class="t-news"></div>
+
+        <div class="t-head t-head-row t-hist-head">
+          <div><p class="t-eyebrow">연혁</p><h2>AWOS가 걸어온 길</h2></div>
+          <a class="t-more" href="history.html">연혁 전체 보기</a>
+        </div>
+        <ol id="t-timeline" class="t-timeline"></ol>
+      </div>
+    </section>
+
+    <!-- 전체 기능 -->
+    <section class="t-sec t-tint" aria-labelledby="t-all-title">
+      <div class="t-wrap">
+        <div class="t-head">
+          <p class="t-eyebrow">전체 기능</p>
+          <h2 id="t-all-title">기능 한눈에 보기</h2>
+        </div>
+        <div class="t-acc">
+          <details open><summary>스케줄</summary><ul><li>라인업 취합</li><li>자동 배정</li><li>NOTAM · 공역 제한 반영</li><li>공역 · 출항 간격 규칙</li><li>확정 알림</li><li>교관 근무표</li></ul></details>
+          <details><summary>브리핑 · 안전</summary><ul><li>브리핑지 자동 작성</li><li>교관 결재</li><li>Go / No-go</li><li>실시간 비행 추적</li><li>비행 적합성 · 커런시</li><li>안전 공지 확인</li></ul></details>
+          <details><summary>기록</summary><ul><li>전자 로그북</li><li>훈련기록부</li><li>교관 전자서명</li><li>서명 이력 보관</li><li>엑셀 가져오기</li><li>비행경력증명서 출력</li></ul></details>
+          <details><summary>자격 · 법령</summary><ul><li>자격증명 관리</li><li>항공신체검사 유효기간</li><li>항공영어구술능력 유효기간</li><li>응시 요건 진척</li><li>근거 조문 표시</li><li>법령 개정 확인</li></ul></details>
+          <details><summary>기관 운영</summary><ul><li>기단 모니터</li><li>가동률</li><li>비행시간 기준 진도</li><li>교관 비행시간 집계</li><li>구성원 · 차수 관리</li><li>공지 · 휴가 승인</li></ul></details>
+          <details><summary>계정 · 권한</summary><ul><li>역할별 화면</li><li>기관 가입 코드</li><li>기관 승인</li><li>교관 · 증명서 승인</li></ul></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 마무리 문의 -->
+    <section class="t-cta" aria-labelledby="t-cta-title">
+      <div class="t-wrap t-cta-inner">
+        <h2 id="t-cta-title">AWOS 도입 상담</h2>
+        <p>교육원의 지금 운영 방식을 들려주시면, 맞춰 구성한 화면으로 안내해 드립니다.</p>
+        <div class="t-ctas">
+          <a class="t-btn t-btn-white" data-app-path="/inquiry" href="https://aviationwallet.com/inquiry">도입 문의</a>
+          <a class="t-btn t-btn-ghost" data-mail="[AWOS] 도입 문의" href="#">메일 보내기</a>
+        </div>
+      </div>
+    </section>
   </div>
 
   <!-- ===== 태블릿 · 모바일: 한 장씩 넘기는 화면 ===== -->
@@ -196,7 +432,7 @@
   </section>
 
   <!-- ③ 역할별 화면 -->
-  <section id="service" class="slide lp-sec" aria-labelledby="roles-title">
+  <section id="service-m" class="slide lp-sec" aria-labelledby="roles-title">
     <div class="lp-wrap">
       <div class="lp-head">
         <p class="rv lp-eyebrow">FOR EVERYONE</p>

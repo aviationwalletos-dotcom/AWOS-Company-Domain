@@ -32,6 +32,14 @@
       return '<li><a href="' + n.href + '"' + cur + ">" + n.label + "</a></li>";
     }).join("");
     header.innerHTML =
+      '<div class="util-bar"><div class="wrap util-row">' +
+        '<span>한국형 비행교육원 운영 시스템</span>' +
+        '<span class="util-links">' +
+          '<a href="index.html#pricing">요금 안내</a>' +
+          '<a href="index.html#faq">자주 묻는 질문</a>' +
+          (S.email ? '<a href="' + mailHref() + '">' + esc(S.email) + "</a>" : "") +
+        "</span>" +
+      "</div></div>" +
       '<div class="wrap header-row">' +
         '<a class="brand" href="index.html" aria-label="AWOS 홈">' +
           '<span class="brand-short">AW<span class="brand-os">OS</span></span>' +
@@ -74,18 +82,27 @@
     if (S.email) info.push('<div><a href="' + mailHref() + '">' + esc(S.email) + "</a></div>");
 
     footer.innerHTML =
-      '<div class="wrap footer-grid">' +
+      '<div class="wrap footer-cols">' +
         '<div class="footer-info"><picture><source srcset="assets/img/awos-logo-ring-288.webp" type="image/webp"><img class="footer-logo" src="assets/img/awos-logo-ring-288.png" alt="AWOS" width="88" height="88"></picture>' + info.join("") + "</div>" +
-        '<ul class="footer-links">' +
+        '<div><p class="footer-h">회사</p><ul class="footer-links">' +
           '<li><a href="about.html">회사 소개</a></li>' +
           '<li><a href="history.html">연혁</a></li>' +
           '<li><a href="news.html">소식</a></li>' +
-          '<li><a href="' + esc(S.appUrl) + '">AWOS 서비스</a></li>' +
-        "</ul>" +
-        '<div class="footer-legal">' +
-          (S.patentNote ? "<div>" + esc(S.patentNote) + "</div>" : "") +
-          "<div>© " + new Date().getFullYear() + " " + esc(S.companyEn || "AWOS") + "</div>" +
-        "</div>" +
+        "</ul></div>" +
+        '<div><p class="footer-h">서비스</p><ul class="footer-links">' +
+          '<li class="desk-only"><a href="index.html#how">작동 방식</a></li>' +
+          '<li class="desk-only"><a href="index.html#pricing">요금 안내</a></li>' +
+          '<li class="desk-only"><a href="index.html#faq">자주 묻는 질문</a></li>' +
+          '<li><a href="' + esc(S.appUrl) + '">AWOS 열기</a></li>' +
+        "</ul></div>" +
+        '<div><p class="footer-h">문의</p><ul class="footer-links">' +
+          '<li><a href="' + esc(S.appUrl) + '/inquiry">도입 문의</a></li>' +
+          (S.email ? '<li><a href="' + mailHref() + '">' + esc(S.email) + "</a></li>" : "") +
+        "</ul></div>" +
+      "</div>" +
+      '<div class="wrap footer-bottom">' +
+        (S.patentNote ? "<span>" + esc(S.patentNote) + "</span>" : "<span></span>") +
+        "<span>© " + new Date().getFullYear() + " " + esc(S.companyEn || "AWOS") + "</span>" +
       "</div>";
   }
 
@@ -262,85 +279,40 @@
         '<ol class="hist-rows">' + rows + "</ol></section>";
     }).join("");
   }
-  /* ---------- 데스크톱 홈: 연혁 · 소식 · 아래 한 줄 ---------- */
-  var dHist = document.getElementById("desk-history");
-  if (dHist) {
-    var flat = [];
-    (window.HISTORY || []).slice().sort(function (a, b) {
-      return (b.year * 100 + b.month) - (a.year * 100 + a.month);
-    }).forEach(function (h) {
-      h.items.forEach(function (t, k) { flat.push({ y: h.year, m: h.month, t: t, first: k === 0 }); });
-    });
-    dHist.innerHTML = flat.slice(0, 8).map(function (e, i) {
-      return '<li class="dh-row' + (i === 0 ? " is-latest" : "") + (e.first ? "" : " same-month") + '">' +
-        '<span class="dh-dot" aria-hidden="true"></span>' +
-        '<time class="dh-when" datetime="' + e.y + "-" + String(e.m).padStart(2, "0") + '">' + (e.first ? e.y + ". " + e.m + "." : "") + "</time>" +
-        '<span class="dh-text">' + esc(e.t) + "</span></li>";
+  /* ---------- 데스크톱 홈: 소식 카드 · 연혁 타임라인 ---------- */
+  var tNews = document.getElementById("t-news");
+  if (tNews) {
+    tNews.innerHTML = news.length ? news.slice(0, 3).map(function (n) {
+      return '<a class="t-news-card" href="news.html?id=' + encodeURIComponent(n.id) + '">' +
+        '<span class="t-news-meta"><span class="t-news-cat">' + esc(n.category) + "</span>" +
+        '<time datetime="' + esc(n.date) + '">' + fmtDate(n.date) + "</time></span>" +
+        '<span class="t-news-title">' + esc(n.title) + "</span>" +
+        (n.summary ? '<span class="t-news-sum">' + esc(n.summary) + "</span>" : "") +
+        '<span class="t-news-go">자세히 보기</span></a>';
+    }).join("") : '<p class="empty">아직 올라온 소식이 없습니다.</p>';
+  }
+  var tTime = document.getElementById("t-timeline");
+  if (tTime) {
+    var hs = (window.HISTORY || []).slice().sort(function (a, b) {
+      return (a.year * 100 + a.month) - (b.year * 100 + b.month);
+    }).slice(-5);
+    tTime.innerHTML = hs.map(function (h, i) {
+      return '<li class="t-tl' + (i === hs.length - 1 ? " is-latest" : "") + '">' +
+        '<time datetime="' + h.year + "-" + String(h.month).padStart(2, "0") + '">' + h.year + ". " + h.month + ".</time>" +
+        "<ul>" + h.items.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul></li>";
     }).join("");
-    var clip = function () { dHist.classList.toggle("is-clipped", dHist.scrollHeight > dHist.clientHeight + 2); };
-    clip(); window.addEventListener("resize", clip);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(clip);
-  }
-  var dNews = document.getElementById("desk-news");
-  if (dNews) {
-    var catCls = { "공지": "c-notice", "소식": "c-news", "보도": "c-press" };
-    var now = Date.now();
-    dNews.innerHTML = news.length ? news.slice(0, 4).map(function (n) {
-      var fresh = (now - new Date(n.date + "T00:00:00+09:00").getTime()) < 14 * 864e5;
-      return '<li><a class="dn-row" href="news.html?id=' + encodeURIComponent(n.id) + '">' +
-        '<span class="dn-tags"><span class="dn-cat ' + (catCls[n.category] || "") + '">' + esc(n.category) + "</span>" +
-        (fresh ? '<span class="dn-new">NEW</span>' : "") + "</span>" +
-        '<span class="dn-title">' + esc(n.title) + "</span>" +
-        '<time class="dn-date" datetime="' + esc(n.date) + '">' + fmtDate(n.date) + "</time></a></li>";
-    }).join("") : '<li class="empty">아직 올라온 소식이 없습니다.</li>';
-  }
-  var dFoot = document.getElementById("desk-foot");
-  if (dFoot) {
-    var bits = [esc(S.companyKo)];
-    if (S.ceo) bits.push("대표 " + esc(S.ceo));
-    if (S.bizNumber) bits.push("사업자등록번호 " + esc(S.bizNumber));
-    if (S.email) bits.push('<a href="' + mailHref() + '">' + esc(S.email) + "</a>");
-    if (S.patentNote) bits.push(esc(S.patentNote));
-    dFoot.innerHTML = "<p>" + bits.join('<span class="sep" aria-hidden="true"></span>') + "</p>" +
-      "<p>© " + new Date().getFullYear() + " " + esc(S.companyEn || "AWOS") + "</p>";
   }
 
-  /* ---------- 데스크톱 홈: 기능 장면 자동 재생 ---------- */
-  var player = document.querySelector(".player");
-  if (player) {
-    var scenes = player.querySelectorAll(".scene");
-    var pbtns = player.querySelectorAll(".player-nav button");
-    var SCENE_MS = 6500, cur = -1, timer = null;
-    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) player.classList.add("no-auto");
-    Array.prototype.forEach.call(scenes, function (sc) {
-      Array.prototype.forEach.call(sc.querySelectorAll(".sv"), function (el, i) { el.style.setProperty("--i", i); });
-      Array.prototype.forEach.call(sc.querySelectorAll(".flow-chips li"), function (el, j) { el.style.setProperty("--j", j); });
-    });
-    var visible = function () { return player.offsetParent !== null && !document.hidden; };
-    var tick;
-    var show = function (n) {
-      cur = n;
-      Array.prototype.forEach.call(scenes, function (sc, i) {
-        sc.classList.toggle("is-on", i === n);
-        sc.setAttribute("aria-hidden", String(i !== n));
-      });
-      Array.prototype.forEach.call(pbtns, function (b, i) {
-        b.classList.toggle("is-done", i < n);
-        b.classList.toggle("is-on", i === n);
-        b.setAttribute("aria-current", i === n ? "step" : "false");
-        var bar = b.querySelector(".pbar span");
-        bar.style.animation = "none"; void bar.offsetWidth; bar.style.animation = "";
-        bar.style.animationDuration = SCENE_MS + "ms";
-      });
-      window.clearTimeout(timer);
-      if (!reduceMotion) timer = window.setTimeout(tick, SCENE_MS);
-    };
-    tick = function () {
-      if (!visible()) { timer = window.setTimeout(tick, 1000); return; }
-      show((cur + 1) % scenes.length);
-    };
-    Array.prototype.forEach.call(pbtns, function (b, i) { b.addEventListener("click", function () { show(i); }); });
-    show(0);
-  }
+  /* ---------- 데스크톱 전용 위치로 가는 링크를 폰·태블릿에서도 맞게 ---------- */
+  var altTarget = { service: "service-m", how: "service-m" };
+  var fixHash = function () {
+    var id = location.hash.slice(1);
+    var el = id && document.getElementById(id);
+    if (el && el.offsetParent === null && altTarget[id]) {
+      var alt = document.getElementById(altTarget[id]);
+      if (alt) alt.scrollIntoView();
+    }
+  };
+  window.addEventListener("hashchange", fixHash);
+  window.addEventListener("load", fixHash);
 })();
