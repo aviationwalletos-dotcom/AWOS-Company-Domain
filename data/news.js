@@ -5,10 +5,14 @@
   - category: "공지" | "소식" | "보도" 중 하나
   - body: 문단 하나가 배열 항목 하나
   - link (선택): { label: "버튼 글자", url: "https://..." }
+  - image (선택): 대표 사진. 저장소에 넣은 사진이면 "assets/img/news/파일명.jpg",
+    Unsplash 사진이면 사진 번호(예: "1691394045643-aafd8e17deab")만 적으면 됩니다.
+    비워 두면 분류별 기본 사진이 들어갑니다.
 */
 window.NEWS = [
   {
     id: "homepage-open",
+    image: "1691394045643-aafd8e17deab",
     date: "2026-11-05",
     category: "공지",
     title: "AWOS 기업 홈페이지를 열었습니다",
@@ -21,6 +25,7 @@ window.NEWS = [
   },
   {
     id: "kac-incubating-complete",
+    image: "1746129700182-bef672132578",
     date: "2026-10-17",
     category: "소식",
     title: "한국공항공사 항공산업 창업 인큐베이팅 프로그램 수료",
@@ -32,6 +37,7 @@ window.NEWS = [
   },
   {
     id: "awos-2-0",
+    image: "1761813409957-681c1e4376ec",
     date: "2026-09-05",
     category: "소식",
     title: "aviationwallet.com 2.0 운영 시작",
@@ -43,6 +49,7 @@ window.NEWS = [
   },
   {
     id: "patent-4",
+    image: "1532200624530-cc3d3d0d636c",
     date: "2026-08-13",
     category: "소식",
     title: "핵심 기술 특허 4건 출원",
@@ -53,6 +60,7 @@ window.NEWS = [
   },
   {
     id: "kau-bi",
+    image: "1764625433212-792495d15761",
     date: "2026-08-05",
     category: "소식",
     title: "한국항공대학교 창업보육센터 입주",

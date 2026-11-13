@@ -16,3 +16,14 @@ window.SITE = {
 
   patentNote: "특허 출원 제10-2026-0151507호 외 3건"
 };
+
+/*
+  사진 주소 만들기
+  - "assets/..." 나 "https://..." 로 시작하면 그대로 씁니다. (저장소에 넣은 사진)
+  - 그 밖에는 Unsplash 사진 번호로 보고 주소를 만듭니다. (무료 Unsplash 라이선스 사진)
+*/
+window.PHOTO = function (id, w) {
+  if (!id) return "";
+  if (/^(assets\/|https?:)/.test(id)) return id;
+  return "https://images.unsplash.com/photo-" + id + "?auto=format&fit=crop&w=" + (w || 1200) + "&q=75";
+};
